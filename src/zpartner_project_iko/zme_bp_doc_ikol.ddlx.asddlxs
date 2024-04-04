@@ -1,0 +1,72 @@
+@Metadata.layer: #PARTNER
+@Search.searchable: true
+
+@UI: {
+  headerInfo: {
+    typeName: 'DOC',
+    typeNamePlural: 'Documents',
+    title: { type: #STANDARD, label: 'Documents', value: 'Doctype' }
+  }
+}
+
+annotate view ZC_BP_DOC_IKO with
+{
+
+  @UI.facet: [ {
+                id: 'idIdentification',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Documents',
+                position: 10
+                }]
+
+  @UI.hidden: true
+  Recordid;
+
+  @UI: {
+  identification: [{ position: 10, label: 'Doctype' }],
+  lineItem: [{ position: 10, label: 'Doctype' }] }
+  @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_DOC_TYPE_IKO', element: 'value_low' }//,
+  //additionalBinding: [{ localElement: 'Doctype', element: 'doctypetxt' }] //для доп. поля с описанием
+  }]
+  Doctype;
+
+  @UI: {
+  identification: [{ position: 20, label: 'Docnum' }],
+  lineItem: [{ position: 20, label: 'Docnum' }] }
+  @Search.defaultSearchElement: true
+  Docnum;
+
+  @UI: {
+  identification: [{ position: 30, label: 'Validfrom' }],
+  lineItem: [{ position: 30, label: 'Validfrom' }] }
+  @Search.defaultSearchElement: true
+  Validfrom;
+
+  @UI: {
+  identification: [{ position: 40, label: 'Validto' }],
+  lineItem: [{ position: 40, label: 'Validto' }] }
+  @Search.defaultSearchElement: true
+  Validto;
+
+  @UI: {
+  identification: [{ position: 50, label: 'Countriss' }],
+  lineItem: [{ position: 50, label: 'Countriss' }] }
+  @Search.defaultSearchElement: true
+  Countriss;
+
+
+  @Search.defaultSearchElement: true
+  CreatedBy;
+
+  @Search.defaultSearchElement: true
+  CreatedAt;
+
+  @Search.defaultSearchElement: true
+  LastChangedBy;
+
+  @Search.defaultSearchElement: true
+  LastChangedAt;
+
+}

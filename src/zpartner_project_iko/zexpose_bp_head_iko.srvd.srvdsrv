@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition BP HEAD IKO'
+define service Zexpose_bp_head_iko {
+  expose ZC_BP_HEAD_IKO;
+  expose ZC_BP_DOC_IKO;
+}

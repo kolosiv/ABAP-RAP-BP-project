@@ -1,0 +1,81 @@
+managed implementation in class zbp_i_bp_head_iko unique;
+//strict ( 2 );
+with draft;
+define behavior for ZI_BP_HEAD_IKO //alias <alias_name>
+persistent table zdb_bp_head_iko
+draft table zdr_bp_head_iko
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  validation checkempty on save { field Birthdate, Firstname, Idnum, Gender; create; update; }
+
+  determination detchangedata on save { create; update; field LastChangedBy; }
+
+  association _doc { create; }
+
+  field ( numbering : managed, readonly ) Recordid;
+  field ( mandatory ) Birthdate, Firstname, Idnum, Gender;
+
+  action ( features : instance ) setonservice result [1] $self;
+
+  mapping for zdb_bp_head_iko
+    {
+      recordid       = Recordid;
+      CreatedBy      = Created_By;
+      CreatedAt      = Created_At;
+      LastChangedBy  = Last_Changed_By;
+      LastChangedAt  = Last_Changed_At;
+      firstname      = Firstname;
+      lastname       = Lastname;
+      middlename     = Middlename;
+      birthdate      = Birthdate;
+      marrstat       = Marrstat;
+      gender         = Gender;
+      prevfamylyflag = Prevfamylyflag;
+      prevfamyly     = Prevfamyly;
+      education      = Education;
+      natio          = Natio;
+      emplcategory   = Emplcategory;
+      army           = Army;
+      residenct      = Residenct;
+      idnum          = Idnum;
+      status         = Status;
+    }
+}
+
+define behavior for ZI_BP_DOC_IKO //alias <alias_name>
+persistent table zdb_bp_doc_iko
+draft table zdr_bp_doc_iko
+lock dependent by _head
+authorization dependent by _head
+etag master LastChangedAt
+{
+  update;
+  delete;
+
+  association _head;
+
+  field (  readonly ) Recordid;
+  field (  readonly : update ) Docnum;
+  field (  readonly : update ) Doctype;
+
+  mapping for zdb_bp_doc_iko
+    {
+      Recordid      = recordid;
+      Doctype       = doctype;
+      Docnum        = docnum;
+      Validfrom     = validfrom;
+      Validto       = validto;
+      Countriss     = countriss;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+    }
+
+}

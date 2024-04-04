@@ -1,0 +1,149 @@
+@Metadata.layer: #PARTNER
+
+@UI: {
+  headerInfo: {
+    typeName: 'BPIKO',
+    typeNamePlural: 'Business partner IKO',
+    title: { type: #STANDARD, label: 'Partner', value: 'Idnum' }
+  }
+}
+
+annotate view ZC_BP_HEAD_IKO with
+{
+
+  @UI.facet: [ {
+                id: 'idIdentification',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Business partner',
+                position: 10
+                },
+                {
+                id: 'doc',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                label: 'Documents',
+                position: 20,
+                targetElement: '_doc'
+                }]
+
+  @UI: {
+  identification: [{ position: 10, label: 'Record ID' }],
+  selectionField: [{ position: 10 }] }
+  Recordid;
+
+  @UI: {
+  identification: [{ position: 20, label: 'Created by' }],
+  selectionField: [{ position: 20 }] }
+  CreatedBy;
+
+  @UI: {
+      identification: [{ position: 30, label: 'Created at' }],
+      selectionField: [{ position: 30 }] }
+  CreatedAt;
+
+  @UI: {
+      identification: [{ label: 'Last Changed By' }] }
+  LastChangedBy;
+
+  @UI: {
+  identification: [{ label: 'Last Changed At' }] }
+  LastChangedAt;
+
+  @UI: {
+  lineItem: [ { position: 40, label: 'First name' } ],
+  identification: [{ position: 40, label: 'First name' }],
+  selectionField: [{ position: 40 }] }
+  Firstname;
+
+  @UI: {
+  lineItem: [ { position: 50, label: 'Last name' } ],
+  identification: [{ position: 50, label: 'Last name' }],
+  selectionField: [{ position: 50 }] }
+  Lastname;
+
+  @UI: {
+  lineItem: [ { label: 'Middle name' } ],
+  identification: [{ position: 60, label: 'Middle name' }] }
+  Middlename;
+
+  @UI: {
+  lineItem: [ { position: 70, label: 'Birth date' } ],
+  identification: [{ position: 70, label: 'Birth date' }],
+  selectionField: [{ position: 70 }] }
+  Birthdate;
+
+  @UI: {
+  lineItem: [ { label: 'Marrige status' } ],
+  identification: [{ position: 80, label: 'Marrige status' }] }
+  Marrstat;
+
+  @UI: {
+  lineItem: [ { label: 'Gender' } ],
+  identification: [{ position: 90, label: 'Gender' }] }
+  @Consumption.valueHelpDefinition: [{entity: { name: 'ZI_GENDER_IKO', element: 'value_low' },
+                                              distinctValues: true,
+                                              additionalBinding: [{ localElement: 'text', element: 'text', usage: #FILTER_AND_RESULT }] }]
+  Gender;
+  
+
+  @UI: {
+  lineItem: [ { position: 95, label: 'Gender' } ] } //,
+//  identification: [{ position: 95, label: 'Gender' }] }
+  text;
+
+  @UI: {
+  lineItem: [ { label: 'Prev famyly flag' } ],
+  identification: [{ position: 100, label: 'Prev famyly flag' }] }
+  Prevfamylyflag;
+
+  @UI: {
+  lineItem: [ { label: 'Prev famyly' } ],
+  identification: [{ position: 110, label: 'Prev famyly' }] }
+  Prevfamyly;
+
+  @UI: {
+  lineItem: [ { label: 'Education' } ],
+  identification: [{ position: 120, label: 'Education' }] }
+  Education;
+
+  @UI: {
+  lineItem: [ { position: 130, label: 'Natio' } ],
+  identification: [{ position: 130, label: 'Natio' }],
+  selectionField: [{ position: 130 }] }
+  Natio;
+
+  @UI: {
+  lineItem: [ { label: 'Emplcategory' } ],
+  identification: [{ position: 140, label: 'Emplcategory' }] }
+  Emplcategory;
+
+  @UI: {
+  lineItem: [ { label: 'Army' } ],
+  identification: [{ position: 150, label: 'Army' }] }
+  Army;
+
+  @UI: {
+  lineItem: [ { position: 160, label: 'Residenct' } ],
+  identification: [{ position: 160, label: 'Residenct' }],
+  selectionField: [{ position: 160 }] }
+  Residenct;
+
+  @UI: {
+  lineItem: [ { position: 170, label: 'Idnum' } ],
+  identification: [{ position: 170, label: 'Idnum' }],
+  selectionField: [{ position: 170 }] }
+  Idnum;
+
+  @UI: {
+  lineItem: [ { position: 180, label: 'Status' },
+              { type: #FOR_ACTION, dataAction: 'setonservice', label: 'Set On service' } ],
+  identification: [{ position: 180, label: 'Status'}],
+  selectionField: [{ position: 180 }] }
+  Status;
+
+  @UI: {
+  identification: [{ position: 75, label: 'Age' }] }
+  Age;
+
+}

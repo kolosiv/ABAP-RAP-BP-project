@@ -1,0 +1,7 @@
+CLASS zbp_i_bp_head_iko DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_bp_head_iko.
+
+ENDCLASS.
+
+CLASS zbp_i_bp_head_iko IMPLEMENTATION.
+
+ENDCLASS.

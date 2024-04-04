@@ -1,0 +1,22 @@
+projection;
+use draft;
+//strict ( 2 );
+
+define behavior for ZC_BP_HEAD_IKO //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action setonservice;
+
+  use association _doc { create; }
+}
+
+define behavior for ZC_BP_DOC_IKO //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _head;
+}
